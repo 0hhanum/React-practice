@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import Movie from "./Movie";
 // component 는 대문자로 시작해야함. 규칙
 // const Test = ({ name, age }) => {
 //   return (
@@ -34,6 +35,7 @@ import axios from "axios";
 class App extends React.Component {
   state = {
     isLoading: true,
+    movies: []
   };
   /*
   add = () => {
@@ -49,14 +51,16 @@ class App extends React.Component {
 
   getMovies = async () => {
     const { data: { data: { movies } } } = await axios.get("https://yts-proxy.now.sh/list_movies.json");
-    this.setState({ movies });
+    this.setState({ movies, isLoading: false });
   };
   componentDidMount() {
     this.getMovies();
   };
   render() {
-    const { isLoading } = this.state;
-    return <div>{isLoading ? "Loading..." : "We are ready"}</div>;
+    const { movies, isLoading } = this.state;
+    return <div>{isLoading ? "Loading..." : movies.map(movie => (
+      <Movie key={movie.id} id={movie.id} year={movie.year} title={movie.title} summary={movie.summary} poster={movie.medium_cover_image} />
+    ))} </div>;
   };
 };
 
