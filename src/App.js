@@ -22,13 +22,40 @@ const list = [
   { id: 3, "name": "c", "age": 22 },
 ]
 
-function App() {
-  return (
-    <div className="App">
-      {list.map(element => <Test key={element.id} name={element.name} age={element.age} />)}
-    </div>
-  );
-};
+// function component
+// function App() {
+//   return (
+//     <div className="App">
+//       {list.map(element => <Test key={element.id} name={element.name} age={element.age} />)}
+//     </div>
+//   );
+// };
 /* react 내에서 모든 element 는 달라야함. 이를 구분하기 위해 key 값을 넣어줌. */
+
+class App extends React.Component {
+  state = {
+    count: 0
+  };
+  add = () => {
+    // this.setState({ count: this.state.count + 1 })
+    this.setState(current => ({ count: current.count + 1 }))
+    // setState 호출 => react 는 새로운 state 와 함께 render 를 다시 진행
+  };
+  minus = () => {
+    // this.setState({ count: this.state.count - 1 })
+    this.setState(current => ({ count: current.count - 1 }))
+  };
+  render() {
+    return (
+      <div>
+        <h1>
+          Class Component {this.state.count}
+        </h1>
+        <button onClick={this.add}>Add</button>
+        <button onClick={this.minus}>Minus</button>
+      </div>
+    );
+  };
+};
 
 export default App;
