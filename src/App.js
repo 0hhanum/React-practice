@@ -1,20 +1,19 @@
 import React from "react";
-import PropTypes from "prop-types";
-
+import axios from "axios";
 // component 는 대문자로 시작해야함. 규칙
-const Test = ({ name, age }) => {
-  return (
-    <div>
-      <h1> {name}  </h1>
-      <h3> {age} </h3>
-    </div>
-  );
-};
+// const Test = ({ name, age }) => {
+//   return (
+//     <div>
+//       <h1> {name}  </h1>
+//       <h3> {age} </h3>
+//     </div>
+//   );
+// };
 
-Test.propTypes = {
-  name: PropTypes.string.isRequired,
-  age: PropTypes.number.isRequired,
-};
+// Test.propTypes = {
+//   name: PropTypes.string.isRequired,
+//   age: PropTypes.number.isRequired,
+// };
 
 // const list = [
 //   { id: 1, "name": "a", "age": 20 },
@@ -47,15 +46,17 @@ class App extends React.Component {
     this.setState(current => ({ count: current.count - 1 }))
   };
   */
+
+  getMovies = async () => {
+    const { data: { data: { movies } } } = await axios.get("https://yts-proxy.now.sh/list_movies.json");
+    this.setState({ movies });
+  };
   componentDidMount() {
-    setTimeout(() => {
-      this.setState({ isLoading: false });
-    }, 600);
+    this.getMovies();
   };
   render() {
     const { isLoading } = this.state;
     return <div>{isLoading ? "Loading..." : "We are ready"}</div>;
-
   };
 };
 
