@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    color: wheat
   }
   
   body {
@@ -41,7 +42,7 @@
   
   .movies .movie {
     width: 45%;
-    background-color: royalblue;
+    background-color: darkgreen;
     margin-bottom: 70px;
     display: flex;
     align-items: flex-start;
