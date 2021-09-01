@@ -1,0 +1,16 @@
+.nav{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top:20px;
+    left:20px;
+}
+
+.nav a{
+    background-color: darkgrey;
+    color: black;
+    padding: 15px 30px;
+    text-decoration: none;
+    margin-bottom:15px;
+    border-radius: 30px;
+}

@@ -34,11 +34,11 @@ class Home extends React.Component {
             // class 로 하면 리액트가 js 의 Class 와 혼동하니 className 부여
             <section className="container">
                 {isLoading
-                    ? <div className="loader">
-                        <span className="loader__text">Loading..</span>
+                    ? <div className="loader" id="loader">
+                        <span className="loader__text">LOADING</span>
                     </div>
                     : (
-                        <div className="movies">
+                        <div className="movies" id="movies">
                             {
                                 movies.map(movie => (
                                     < Movie
