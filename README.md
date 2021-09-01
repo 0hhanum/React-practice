@@ -1,8 +1,10 @@
 # React practice
 
-Using...
+Movie page Using...
 
 • React
 
+• Axios (to fetch movie API)
 
-Features
+• HashRouter
+
